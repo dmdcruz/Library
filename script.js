@@ -1,7 +1,7 @@
 const myLibrary = [ ];
 
 const addBookForm = document.getElementById("addBookForm");
-
+const cardContainer = document.getElementById("cardContainer");
 
 function Book(title, author) {
     //my constructor
@@ -20,4 +20,24 @@ function addBookToLibrary() {
 
     newBookTitle.value = "";
     newBookAuthor.value = "";
+}
+
+function displayBooks(bookArray) {
+    bookArray.forEach(book => {
+        
+        const card = document.createElement('div');
+        card.classList.add('card');
+
+        const cardTitle = document.createElement('h2');
+        cardTitle.textContent = book.title;
+
+        const cardContent = document.createElement('p');
+        cardContent.textContent = "by " + book.author;
+
+        cardContainer.appendChild(card);
+        card.appendChild(cardTitle);
+        card.appendChild(cardContent);
+        
+
+    });
 }
