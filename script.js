@@ -1,7 +1,14 @@
 const myLibrary = [ ];
 
+let myObject = { title: "John", author: "25" }; // create an object
+
+myLibrary.push(myObject); 
+
 const addBookForm = document.getElementById("addBookForm");
 const cardContainer = document.getElementById("cardContainer");
+const newBookBtn = document.getElementById("newBookBtn");
+const dialog = document.querySelector("dialog");
+const addBookDialogBtn = document.getElementById("addBookBtn");
 
 function Book(title, author) {
     //my constructor
@@ -23,6 +30,8 @@ function addBookToLibrary() {
 }
 
 function displayBooks(bookArray) {
+    cardContainer.innerHTML = "";
+    
     bookArray.forEach(book => {
         
         const card = document.createElement('div');
@@ -41,3 +50,16 @@ function displayBooks(bookArray) {
 
     });
 }
+
+// "NEW BOOK" button opens the dialog form modally
+newBookBtn.addEventListener("click", function(event) {
+    event.preventDefault();
+    dialog.showModal();
+});
+
+addBookDialogBtn.addEventListener("click", () => {
+    addBookToLibrary();
+    displayBooks(myLibrary);
+});
+
+displayBooks(myLibrary);
